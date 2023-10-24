@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YekongLib2", "YekongLib2\YekongLib2.csproj", "{5AC01BF7-AE60-4686-B597-5F07E4E1B03A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebugConsole", "DebugConsole\DebugConsole.csproj", "{D0AAF7E3-5D67-4D60-A3DB-DE7E83D945E5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5AC01BF7-AE60-4686-B597-5F07E4E1B03A} = {5AC01BF7-AE60-4686-B597-5F07E4E1B03A}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AC01BF7-AE60-4686-B597-5F07E4E1B03A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AC01BF7-AE60-4686-B597-5F07E4E1B03A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AC01BF7-AE60-4686-B597-5F07E4E1B03A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AC01BF7-AE60-4686-B597-5F07E4E1B03A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0AAF7E3-5D67-4D60-A3DB-DE7E83D945E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0AAF7E3-5D67-4D60-A3DB-DE7E83D945E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0AAF7E3-5D67-4D60-A3DB-DE7E83D945E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0AAF7E3-5D67-4D60-A3DB-DE7E83D945E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
