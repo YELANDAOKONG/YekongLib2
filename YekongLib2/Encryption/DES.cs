@@ -6,7 +6,7 @@ namespace YekongLib2.Encryption;
 
 public class DES
 {
-    public static byte[] Encrypt(byte[] str, byte[] sKey)
+    public static byte[] Encrypt(byte[] str, byte[] sKey, CipherMode cipherMode = CipherMode.CBC, PaddingMode paddingMode = PaddingMode.PKCS7)
     {
         DESCryptoServiceProvider des = new DESCryptoServiceProvider();
         byte[] inputByteArray = str;
@@ -24,6 +24,8 @@ public class DES
         }
         des.Key = sKey;
         des.IV = sKey;
+        des.Mode = cipherMode;
+        des.Padding = paddingMode;
         MemoryStream ms = new MemoryStream();
         CryptoStream cs = new CryptoStream(ms, des.CreateEncryptor(), CryptoStreamMode.Write);
         cs.Write(inputByteArray, 0, inputByteArray.Length);
@@ -31,7 +33,7 @@ public class DES
         return ms.ToArray();
     }
     
-    public static byte[] Decrypt(byte[] pToDecrypt, byte[] sKey)
+    public static byte[] Decrypt(byte[] pToDecrypt, byte[] sKey, CipherMode cipherMode = CipherMode.CBC, PaddingMode paddingMode = PaddingMode.PKCS7)
     {
         DESCryptoServiceProvider des = new DESCryptoServiceProvider();
         byte[] inputByteArray = pToDecrypt;
@@ -49,6 +51,8 @@ public class DES
         }
         des.Key = sKey;
         des.IV = sKey;
+        des.Mode = cipherMode;
+        des.Padding = paddingMode;
         MemoryStream ms = new MemoryStream();
         CryptoStream cs = new CryptoStream(ms, des.CreateDecryptor(), CryptoStreamMode.Write);
         cs.Write(inputByteArray, 0, inputByteArray.Length);
@@ -57,24 +61,24 @@ public class DES
     }
 
     
-    public static string Encrypt(string str, string sKey, Encoding encoding = null)
+    public static string Encrypt(string str, string sKey, Encoding encoding = null, CipherMode cipherMode = CipherMode.CBC, PaddingMode paddingMode = PaddingMode.PKCS7)
     {
         if (encoding == null)
         {
             encoding = Encoding.UTF8;
         }
 
-        var bytes = Encrypt(encoding.GetBytes(str), encoding.GetBytes(sKey));
+        var bytes = Encrypt(encoding.GetBytes(str), encoding.GetBytes(sKey), cipherMode: cipherMode, paddingMode: paddingMode);
         return Convert.ToBase64String(bytes);
     }
     
-    public static string Decrypt(string pToDecrypt, string sKey, Encoding encoding = null)
+    public static string Decrypt(string pToDecrypt, string sKey, Encoding encoding = null, CipherMode cipherMode = CipherMode.CBC, PaddingMode paddingMode = PaddingMode.PKCS7)
     {
         if (encoding == null)
         {
             encoding = Encoding.UTF8;
         }
-        var bytes = Decrypt(Convert.FromBase64String(pToDecrypt), encoding.GetBytes(sKey));
+        var bytes = Decrypt(Convert.FromBase64String(pToDecrypt), encoding.GetBytes(sKey), cipherMode: cipherMode, paddingMode: paddingMode);
         return encoding.GetString(bytes);
     }
 
